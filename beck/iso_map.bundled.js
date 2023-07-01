@@ -5562,6 +5562,26 @@ function injectStaticHtml() {
       </div>
     </div>
   `;
+
+ // Get the galBtn element
+ const galBtn = document.getElementById('galBtn');
+
+ // Add a click event listener to the galBtn
+ galBtn.addEventListener('click', () => {
+   // Get the galleryLink element
+   const galleryLink = document.getElementById('galleryLink');
+   
+   // Load the content from the file (assuming it's a plain HTML file)
+   const xhr = new XMLHttpRequest();
+   xhr.open('GET', '/Users/xiaoxuanlyu/r9y-map/docs/Active_Active_Datastores.md', true);
+   xhr.onreadystatechange = function () {
+     if (xhr.readyState === 4 && xhr.status === 200) {
+       // Set the content of the galleryLink with the loaded HTML
+       galleryLink.innerHTML = xhr.responseText;
+     }
+   };
+   xhr.send();
+ });
 }
 
 function writeState(substateToWrite) {
